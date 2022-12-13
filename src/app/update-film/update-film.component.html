@@ -1,0 +1,16 @@
+<form>
+    <div [hidden]="ajout" >
+    <label >ID Film: &nbsp;</label>
+    <input type="text" [readonly]="ajout" [(ngModel)]="film.idFilm" name="idFilm" class="form-control w-25">
+    </div>
+    <div>
+    <label>Nom Film: &nbsp;</label>
+    <input type="text" [(ngModel)]="film.nomFilm" name="nomFilm" class="form-control"
+    placeholder="Entrez un nom d'un Film...">
+    </div>
+    <div class="mt-2">
+     <button type="submit" [disabled]="!film.nomFilm" class="btn btn-success"
+    (click)="saveFilm()" >{{ajout ? 'Ajouter' : 'Modifier'}}
+</button>
+    </div>
+    </form>

@@ -1,0 +1,55 @@
+<div class="container">
+   <!--  <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2">
+            <label>Nom Acteur</label>
+            <input type="text" class="form-control" [(ngModel)]="nomActeur" name="nomActeur" class="form-control" />
+            <button type="submit" (click)="rechercherActs()" class="btn btn-primary mb-2 ml-2">
+                Rechercher
+            </button>
+        </div>
+    </form> -->
+
+    <!-- <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Acteur en tapant: </label>
+        <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+        </div>
+</form> -->
+
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Acteur en Tapant: &nbsp;</label>
+        <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+        </div>
+    </form>
+    
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Salaire</th>
+                        <th>Date Naissance</th>
+                        <th>Film</th>
+                        <th colspan="2">Actions</th>
+                      <!--  <th colspan="2">Actions</th>-->
+                    </tr>
+                </thead>
+                <tbody *ngFor="let acteur of acteurs | searchFilter: searchTerm">
+                    <tr>
+                        <td>{{ acteur.idActeur }}</td>
+                        <td>{{ acteur.nomActeur }}</td>
+                        <td>{{ acteur.salaireActeur }}</td>
+                        <td>{{ acteur.dateNaissance | date: "dd/MM/yyyy" }}</td>
+                        <td>{{ acteur.film?.nomFilm }}</td>
+                            <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerActeur(acteur)">Supprimer</a></td>
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateActeur',acteur.idActeur]">Modifier</a></td>
+                  
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

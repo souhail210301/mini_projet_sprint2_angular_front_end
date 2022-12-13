@@ -1,0 +1,35 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un Acteur :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Acteur</label>
+            <input type="text" [(ngModel)]="newActeur.idActeur" name="idActeur" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Acteur</label>
+            <input type="text" [(ngModel)]="newActeur.nomActeur" name="nomActeur" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Salaire Acteur</label>
+            <input type="number" [(ngModel)]="newActeur.salaireActeur" name="SalaireActeur" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date Naissance</label>
+            <input type="date" [(ngModel)]="newActeur.dateNaissance" name="dateNaissance" class="form-control">
+        </div>
+
+         <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Film</label>
+            <select class="form-control form-control-lg" id="idFilm" name="idFilm" [(ngModel)]="newIdFilm">
+                <option *ngFor="let film of films" [value]="film.idFilm">
+                    {{film.nomFilm}}
+                </option>
+            </select>
+        </div> 
+        <div class="mt-2">
+            <button type="submit" (click)="addActeur()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>
